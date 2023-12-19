@@ -1,0 +1,69 @@
+<html>
+<head>
+
+<title>capstone</title>
+<style>
+body {
+background-image: url("zebra.jpg");
+background-size: cover;
+}
+
+form {
+text-align:center
+}
+
+input{
+width: 50%;
+height: 10%;
+}
+
+input[type=submit] {
+  background-color: green;
+  color: white;
+  width: 15%;
+  height:5%;
+}
+
+
+label{
+  font-size: 20px;
+  display: inline-block;
+  width: 150px;
+  text-align: right;}
+
+
+</style>
+</head>
+
+<body>
+<center><h1>Review Sentiment Analysis</h1></center>
+<center><p>Enter a product review and the model will predict its sentiment.</p></center>
+
+
+<form action="{{ url_for('predict')}}" method="post">
+
+
+<!-- <label for = "fnum">Review</label> -->
+<input type = 'text' id = 'fnam' , name = 'fn', required = 'required',placeholder = 'Enter review......' />
+
+<br></br>
+
+<!-- <label for = "snum">Second Number</label>
+<input type = 'text' id = 'snam', name = 'sn', required = 'required', placeholder = 'Enter Second Number...' /> -->
+
+<label></label>
+<input id="submit" type="submit" value="Predict",align="center" ></input>
+
+</form>
+<br></br> 
+<center><h3>{{results}}</h3></center>
+{% if results=="Positive":%}
+    <center><a href="https://imgbb.com/"><img src="https://i.ibb.co/HKxn8JH/positive.png" alt="positive" border="0"></a></center>
+{%elif results=="Negative":%}
+    <center><a href="https://imgbb.com/"><img src="https://i.ibb.co/sHGfbjm/negative.png" alt="negative" border="0"></a></center>
+{%else%}
+    <center><a href="https://imgbb.com/"><img src="https://i.ibb.co/sHRNqbV/neutral.png" alt="neutral" border="0"></a></center>
+{%endif%}
+</body>
+
+</html>
